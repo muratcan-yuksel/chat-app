@@ -7,13 +7,16 @@ import Button from "react-bootstrap/Button";
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 const Input = () => {
-  const [state, setState] = useState("");
+  const [state, setState] = useState();
+  const [output, setOutput] = useState(null);
 
   const handleClick = (e) => {
     e.preventDefault();
+    setOutput(state);
   };
   const handleText = (e) => {
     console.log(e.target.value);
+    setState(e.target.value);
   };
   return (
     <div>
@@ -26,6 +29,7 @@ const Input = () => {
           Submit
         </Button>
       </Form>
+      <p>{output} </p>
     </div>
   );
 };
