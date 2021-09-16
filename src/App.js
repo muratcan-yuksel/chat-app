@@ -1,8 +1,8 @@
 import Input from "./components/Input";
-import firebase from "firebase";
+import { firebase } from "./initFirebase";
+const db = firebase.firestore();
 function App() {
-  const firebaseApp = firebase.apps[0];
-  console.log(firebaseApp);
+  console.log(db.collection("texts"));
   return (
     <div className="App">
       <Input />
