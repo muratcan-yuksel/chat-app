@@ -38,8 +38,8 @@ const Input = () => {
 
   return (
     <div>
+      {/* adds paragraphs */}
       {messages}
-
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Example textarea</Form.Label>
