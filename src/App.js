@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Input from "./components/Input";
 import { firebase } from "./initFirebase";
 import "./style/style.css";
+import ScrollToBottom from "react-scroll-to-bottom";
+
 function App() {
   const ref = firebase.firestore().collection("texts");
   const [state, setState] = useState([
@@ -28,10 +30,12 @@ function App() {
 
   const display = state[0].array.map((item) => {
     return (
-      <div className="messages">
-        <p className="itemName">{item.name}</p>
-        <p className="itemMessage">{item.message}</p>
-      </div>
+      <ScrollToBottom className={ROOT_CSS}>
+        <div className="messages">
+          <p className="itemName">{item.name}</p>
+          <p className="itemMessage">{item.message}</p>
+        </div>
+      </ScrollToBottom>
     );
   });
 
