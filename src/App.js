@@ -4,7 +4,11 @@ import { firebase } from "./initFirebase";
 // const db = firebase.firestore();
 function App() {
   const ref = firebase.firestore().collection("texts");
-  const [state, setState] = useState([]);
+  const [state, setState] = useState([
+    {
+      array: [{ name: null, message: null }],
+    },
+  ]);
   const [loading, setLoading] = useState(false);
 
   function getInput() {
@@ -19,10 +23,10 @@ function App() {
       setLoading(false);
     });
   }
-  console.log(state[0].array);
+  // console.log(state);
+  const dollar = state[0].array;
   useEffect(() => {
     getInput();
-    // console.log(state);
   }, []);
   // console.log(state[0].name);
 
@@ -35,13 +39,9 @@ function App() {
       </div>
     );
   });
-  //the following updates the firestore database
-  // const db = firebase.firestore();
-  // db.collection("cafes")
-  //   .doc("Z47VuwzD3Iw3FdxEXZRY")
-  //   .update({
-  //     array: [{ name: "Steph", message: "I'm saying something" }],
-  //   });
+
+  // console.log(state);
+  // console.log(state[0].array);
 
   if (loading) {
     return <h1>Loading...</h1>;

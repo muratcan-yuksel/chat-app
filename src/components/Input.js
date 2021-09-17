@@ -29,21 +29,13 @@ const Input = () => {
   //   console.log(arr);
   // }, [arr]);
 
-  // let messages = arr.map((item) => {
-  //   return (
-  //     <div>
-  //       <p>{item.name}</p>
-  //       <p>{item.inputValue}</p>
-  //     </div>
-  //   );
-  // });
-
   // //the following updates the firestore database
   const db = firebase.firestore();
   if (arr.length > 0) {
     db.collection("texts")
       .doc("DwcucDim2waadle0CLOF")
       .update({
+        //this is how you add a new item to the array in firestore
         array: firebase.firestore.FieldValue.arrayUnion({
           //new object comes here
           name: arr.slice(-1)[0].name,
@@ -52,13 +44,10 @@ const Input = () => {
       });
   }
 
-  // console.log(arr);
   //get the last message in the array
   // console.log(arr.slice(-1)[0].inputValue);
   return (
     <div>
-      {/* {messages} */}
-
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Example textarea</Form.Label>
