@@ -14,10 +14,14 @@ const Input = () => {
   //get the textarea input
   const [text, setText] = useState("");
   const [arr, setArr] = useState([]);
+  const [name, setName] = useState(null);
 
   //create handlechange function
   const handleChange = (e) => {
-    setText({ inputValue: e.target.value, name: " Brooke says" });
+    setText({
+      inputValue: e.target.value,
+      name: name,
+    });
   };
   //create handleSubmit function
   const handleSubmit = (e) => {
@@ -44,14 +48,35 @@ const Input = () => {
         }),
       });
   }
-
-  //get the last message in the array
-  // console.log(arr.slice(-1)[0].inputValue);
-  return (
-    <div>
+  //get and write userName
+  const getUserName = (e) => {
+    setName(e.target.value);
+  };
+  //this actually does pretty much nothing
+  const writeUserName = (e) => {
+    e.preventDefault();
+  };
+  //conditionnal rendering starts here
+  if (name === null) {
+    return (
+      <Form onSubmit={writeUserName}>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Control
+            onChange={getUserName}
+            type="text"
+            placeholder="write your user name to join chat"
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    );
+  } else {
+    return (
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Example textarea</Form.Label>
+          <Form.Label>Write your message here</Form.Label>
           <Form.Control
             className="textArea"
             onChange={handleChange}
@@ -63,8 +88,8 @@ const Input = () => {
           Submit
         </Button>
       </Form>
-    </div>
-  );
+    );
+  }
 };
 
 export default Input;
