@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import Input from "./components/Input";
 import { firebase } from "./initFirebase";
+import "./style/style.css";
 // const db = firebase.firestore();
 function App() {
   const ref = firebase.firestore().collection("texts");
   const [state, setState] = useState([
     {
-      array: [{ name: null, message: null }],
+      array: [{ name: "", message: "" }],
     },
   ]);
   const [loading, setLoading] = useState(false);
@@ -24,13 +25,12 @@ function App() {
     });
   }
   // console.log(state);
-  const dollar = state[0].array;
   useEffect(() => {
     getInput();
   }, []);
   // console.log(state[0].name);
 
-  const datas = state[0].array.map((item) => {
+  const display = state[0].array.map((item) => {
     // console.log(item);
     return (
       <div>
@@ -48,7 +48,7 @@ function App() {
   }
   return (
     <div className="App">
-      {datas}
+      <div className="display">{display}</div>
       <Input />
       {/* {state[0].name} */}
     </div>

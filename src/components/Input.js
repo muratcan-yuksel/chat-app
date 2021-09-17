@@ -23,6 +23,7 @@ const Input = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setArr([...arr, text]);
+    e.target.reset();
   };
   // useEffect(() => {
   //   // Do something
@@ -51,7 +52,12 @@ const Input = () => {
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Example textarea</Form.Label>
-          <Form.Control onChange={handleChange} as="textarea" rows={3} />
+          <Form.Control
+            className="textArea"
+            onChange={handleChange}
+            as="textarea"
+            rows={3}
+          />
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
