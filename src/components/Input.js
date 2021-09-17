@@ -29,32 +29,35 @@ const Input = () => {
   //   console.log(arr);
   // }, [arr]);
 
-  let messages = arr.map((item) => {
-    return (
-      <div>
-        <p>{item.name}</p>
-        <p>{item.inputValue}</p>
-      </div>
-    );
-  });
+  // let messages = arr.map((item) => {
+  //   return (
+  //     <div>
+  //       <p>{item.name}</p>
+  //       <p>{item.inputValue}</p>
+  //     </div>
+  //   );
+  // });
 
   // //the following updates the firestore database
   const db = firebase.firestore();
-  db.collection("cafes")
-    .doc("Z47VuwzD3Iw3FdxEXZRY")
-    .update({
-      array: firebase.firestore.FieldValue.arrayUnion({
-        //new object comes here
-        name: arr.slice(-1)[0].name,
-        message: arr.slice(-1)[0].inputValue,
-      }),
-    });
+  if (arr.length > 0) {
+    db.collection("texts")
+      .doc("DwcucDim2waadle0CLOF")
+      .update({
+        array: firebase.firestore.FieldValue.arrayUnion({
+          //new object comes here
+          name: arr.slice(-1)[0].name,
+          message: arr.slice(-1)[0].inputValue,
+        }),
+      });
+  }
 
-  //get the last öessage in the array
+  // console.log(arr);
+  //get the last message in the array
   // console.log(arr.slice(-1)[0].inputValue);
   return (
     <div>
-      {messages}
+      {/* {messages} */}
 
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
