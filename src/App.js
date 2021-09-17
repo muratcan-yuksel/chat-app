@@ -13,6 +13,7 @@ function App() {
       const items = [];
       querySnapshot.forEach((doc) => {
         items.push(doc.data());
+        // console.log(doc.data());
       });
       setState(items);
       setLoading(false);
@@ -20,17 +21,27 @@ function App() {
   }
   useEffect(() => {
     getCafes();
-    console.log(state);
+    // console.log(state);
   }, []);
   // console.log(state[0].name);
 
   const datas = state.map((item) => {
-    console.log(item);
+    // console.log(item);
     return (
       <div>
         <p>{item.name}</p>
       </div>
     );
+  });
+  //the following updates the firestore database
+  const db = firebase.firestore();
+
+  db.collection("cafes").doc("Z47VuwzD3Iw3FdxEXZRY").update({
+    name: "userScore",
+    //so I can add an array of objects into firestore
+    city: "numberedConcatArr",
+    // topScores:[{string:userScore, number:numberedConcatArr}]
+    topScores: "scores",
   });
 
   if (loading) {
