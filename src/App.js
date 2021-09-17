@@ -34,15 +34,12 @@ function App() {
     );
   });
   //the following updates the firestore database
-  const db = firebase.firestore();
-
-  db.collection("cafes").doc("Z47VuwzD3Iw3FdxEXZRY").update({
-    name: "userScore",
-    //so I can add an array of objects into firestore
-    city: "numberedConcatArr",
-    // topScores:[{string:userScore, number:numberedConcatArr}]
-    topScores: "scores",
-  });
+  // const db = firebase.firestore();
+  // db.collection("cafes")
+  //   .doc("Z47VuwzD3Iw3FdxEXZRY")
+  //   .update({
+  //     array: [{ name: "Steph", message: "I'm saying something" }],
+  //   });
 
   if (loading) {
     return <h1>Loading...</h1>;

@@ -2,6 +2,8 @@ import React, { useState, useEffect, Fragment } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { firebase } from "../initFirebase";
+
 //the following are just examples /////////
 // import Button from "react-bootstrap/Button";
 // import "bootstrap/dist/css/bootstrap.min.css";
@@ -36,6 +38,20 @@ const Input = () => {
     );
   });
 
+  // //the following updates the firestore database
+  const db = firebase.firestore();
+  db.collection("cafes")
+    .doc("Z47VuwzD3Iw3FdxEXZRY")
+    .update({
+      array: firebase.firestore.FieldValue.arrayUnion({
+        //new object comes here
+        name: arr.slice(-1)[0].name,
+        message: arr.slice(-1)[0].inputValue,
+      }),
+    });
+
+  //get the last öessage in the array
+  // console.log(arr.slice(-1)[0].inputValue);
   return (
     <div>
       {messages}
