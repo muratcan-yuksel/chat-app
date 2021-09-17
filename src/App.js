@@ -48,9 +48,9 @@ function App() {
   }
   return (
     <div className="App">
+      {datas}
       <Input />
       {/* {state[0].name} */}
-      {datas}
     </div>
   );
 }
