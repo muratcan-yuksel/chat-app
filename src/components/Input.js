@@ -29,10 +29,6 @@ const Input = () => {
     setArr([...arr, text]);
     e.target.reset();
   };
-  // useEffect(() => {
-  //   // Do something
-  //   console.log(arr);
-  // }, [arr]);
 
   // //the following updates the firestore database
   const db = firebase.firestore();

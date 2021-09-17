@@ -3,3 +3,15 @@
   border: 1px solid black;
   overflow-y: auto;
 }
+.messages {
+  border: 1px solid blue;
+}
+.itemName {
+  font-weight: 900;
+  margin: 0;
+  padding: 0;
+}
+.itemMessage {
+  margin: 0;
+  padding: 0;
+}
