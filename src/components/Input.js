@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -45,11 +45,11 @@ const Input = () => {
         }),
       });
   }
-  //get and write userName
+  //get userName
   const getUserName = (e) => {
     setFirstTimeUserName(e.target.value);
   };
-  //this actually does pretty much nothing
+  //write username on submit
   const writeUserName = (e) => {
     e.preventDefault();
     setName(firstTimeUserName);
@@ -65,7 +65,7 @@ const Input = () => {
             placeholder="write your user name to join chat"
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button title="getUserName" variant="primary" type="submit">
           Submit
         </Button>
       </Form>
@@ -82,7 +82,7 @@ const Input = () => {
             rows={3}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button title="messageForm" variant="primary" type="submit">
           Submit
         </Button>
       </Form>
