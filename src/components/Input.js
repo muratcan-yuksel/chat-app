@@ -54,17 +54,20 @@ const Input = () => {
     e.preventDefault();
     setName(firstTimeUserName);
   };
-  //use "enter" key for user name
-  const handleEnterUserName = (e) => {
+
+  const handleKeypress = (e) => {
     //it triggers by pressing the enter key
-    if (e.keyCode === 13) {
-      writeUserName();
+    //somehow, for the name submit, I don't need this
+    //also, the user can use shift + enter but it won't affect the outcome. Dunno how'd I do that tbh
+    if (e.charCode === 13 && !e.shiftKey) {
+      setArr([...arr, text]);
+      e.target.value = "";
     }
   };
   //conditionnal rendering starts here
   if (name === null) {
     return (
-      <Form onSubmit={writeUserName} onKeyPress={handleEnterUserName}>
+      <Form onSubmit={writeUserName}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Control
             onChange={getUserName}
@@ -79,7 +82,7 @@ const Input = () => {
     );
   } else {
     return (
-      <Form onSubmit={handleSubmit}>
+      <Form onKeyPress={handleKeypress} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Write your message here</Form.Label>
           <Form.Control
