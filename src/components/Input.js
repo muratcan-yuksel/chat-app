@@ -54,10 +54,17 @@ const Input = () => {
     e.preventDefault();
     setName(firstTimeUserName);
   };
+  //use "enter" key for user name
+  const handleEnterUserName = (e) => {
+    //it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      writeUserName();
+    }
+  };
   //conditionnal rendering starts here
   if (name === null) {
     return (
-      <Form onSubmit={writeUserName}>
+      <Form onSubmit={writeUserName} onKeyPress={handleEnterUserName}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Control
             onChange={getUserName}
