@@ -47,6 +47,8 @@ function App() {
     });
   }
   useEffect(() => {
+    console.log(state[0].array.slice(-1)[0].message);
+
     getInput();
   }, []);
 
@@ -55,7 +57,9 @@ function App() {
   }
   return (
     <div className="App">
-      <Display className="display" state={state} />
+      <div className="display">
+        <Display state={state} />
+      </div>
       <Input />
     </div>
   );

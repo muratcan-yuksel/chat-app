@@ -14,6 +14,7 @@ const Input = () => {
   //get the textarea input
   const [text, setText] = useState("");
   const [arr, setArr] = useState([]);
+  const [firstTimeUserName, setFirstTimeUserName] = useState(null);
   const [name, setName] = useState(null);
 
   //create handlechange function
@@ -46,11 +47,12 @@ const Input = () => {
   }
   //get and write userName
   const getUserName = (e) => {
-    setName(e.target.value);
+    setFirstTimeUserName(e.target.value);
   };
   //this actually does pretty much nothing
   const writeUserName = (e) => {
     e.preventDefault();
+    setName(firstTimeUserName);
   };
   //conditionnal rendering starts here
   if (name === null) {
