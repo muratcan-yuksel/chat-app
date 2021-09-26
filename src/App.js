@@ -19,6 +19,9 @@ const Display = ({ state }) => {
         <div className="messages">
           <p className="itemName">{item.name}</p>
           <p className="itemMessage">{item.message}</p>
+          {/* <p className="itemDate">{item.date}</p> */}
+          <p>{new Date().toString()} </p>
+          {/* {console.log(item.date)} */}
         </div>
       ))}
       <div ref={stateEndRef} />
@@ -47,7 +50,7 @@ function App() {
     });
   }
   useEffect(() => {
-    console.log(state[0].array.slice(-1)[0].message);
+    // console.log(state[0].array.slice(-1)[0].message);
 
     getInput();
   }, []);

@@ -16,17 +16,20 @@ const Input = () => {
   const [arr, setArr] = useState([]);
   const [firstTimeUserName, setFirstTimeUserName] = useState(null);
   const [name, setName] = useState(null);
+  // const [time, setTime] = useState(new Date().toISOString().slice(0, 10));
 
   //create handlechange function
   const handleChange = (e) => {
     setText({
       inputValue: e.target.value,
       name: name,
+      // date: time,
     });
   };
   //create handleSubmit function
   const handleSubmit = (e) => {
     e.preventDefault();
+    // setTime(new Date().toISOString().slice(0, 10));
     setArr([...arr, text]);
     e.target.reset();
   };
@@ -42,6 +45,7 @@ const Input = () => {
           //new object comes here
           name: arr.slice(-1)[0].name,
           message: arr.slice(-1)[0].inputValue,
+          // date: arr.slice(-1)[0].date.toString(),
         }),
       });
   }
