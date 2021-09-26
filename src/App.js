@@ -1,8 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Input from "./components/Input";
 import { firebase } from "./initFirebase";
 import "./style/style.css";
-import ScrollToBottom from "react-scroll-to-bottom";
+
+const Display = ({ state }) => {
+  const stateEndRef = useRef(null);
+  const scrollToBottom = () => {
+    stateEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(() => {
+    // getInput();
+    scrollToBottom();
+  }, [state]);
+
+  return (
+    <div>
+      {state[0].array.map((item) => (
+        <div className="messages">
+          <p className="itemName">{item.name}</p>
+          <p className="itemMessage">{item.message}</p>
+        </div>
+      ))}
+      <div ref={stateEndRef} />
+    </div>
+  );
+};
 
 function App() {
   const ref = firebase.firestore().collection("texts");
@@ -28,23 +50,12 @@ function App() {
     getInput();
   }, []);
 
-  const display = state[0].array.map((item) => {
-    return (
-      <ScrollToBottom className={ROOT_CSS}>
-        <div className="messages">
-          <p className="itemName">{item.name}</p>
-          <p className="itemMessage">{item.message}</p>
-        </div>
-      </ScrollToBottom>
-    );
-  });
-
   if (loading) {
     return <h1>Loading...</h1>;
   }
   return (
     <div className="App">
-      <div className="display">{display}</div>
+      <Display className="display" state={state} />
       <Input />
     </div>
   );
