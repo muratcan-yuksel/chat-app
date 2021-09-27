@@ -20,7 +20,7 @@ const Display = ({ state }) => {
       <div key={uniqid()} className="messages">
         <div className="flexing">
           <p className="itemName">{item.name}</p>
-          <p className="itemDate">
+          {/* <p className="itemDate">
             {new Date(
               item.dateTime.seconds * 1000 + item.dateTime.nanoseconds / 1000000
             ).toDateString() +
@@ -29,12 +29,12 @@ const Display = ({ state }) => {
                 item.dateTime.seconds * 1000 +
                   item.dateTime.nanoseconds / 1000000
               ).toLocaleTimeString()}{" "}
-          </p>
+          </p> */}
         </div>
         <p className="itemMessage">{item.message}</p>
       </div>
     ));
-
+  console.log(state[0].array[1].dateTime.seconds);
   return (
     <div>
       {result}
