@@ -22,6 +22,7 @@ const Input = () => {
     setText({
       inputValue: e.target.value,
       name: name,
+      dateStamp: firebase.firestore.Timestamp.now().toDate().toDateString(),
     });
   };
   //create handleSubmit function
@@ -42,6 +43,7 @@ const Input = () => {
           //new object comes here
           name: arr.slice(-1)[0].name,
           message: arr.slice(-1)[0].inputValue,
+          dateTime: arr.slice(-1)[0].dateStamp,
         }),
       });
   }

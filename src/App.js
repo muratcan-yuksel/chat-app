@@ -22,7 +22,8 @@ const Display = ({ state }) => {
           <div key={uniqid()} className="messages">
             <div className="flexing">
               <p className="itemName">{item.name}</p>
-              <p className="itemDate">{new Date().toString()} </p>
+              {/* <p className="itemDate">{item.dateTime} </p> */}
+              {console.log(item)}
             </div>
             <p className="itemMessage">{item.message}</p>
           </div>
