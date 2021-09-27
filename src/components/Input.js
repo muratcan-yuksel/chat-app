@@ -16,6 +16,8 @@ const Input = () => {
   const [arr, setArr] = useState([]);
   const [firstTimeUserName, setFirstTimeUserName] = useState(null);
   const [name, setName] = useState(null);
+  const [fireArr, setFireArr] = useState();
+
   // const [time, setTime] = useState(new Date().toISOString().slice(0, 10));
 
   //create handlechange function
@@ -49,6 +51,7 @@ const Input = () => {
         }),
       });
   }
+
   //get userName
   const getUserName = (e) => {
     setFirstTimeUserName(e.target.value);
