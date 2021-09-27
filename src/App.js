@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Input from "./components/Input";
 import { firebase } from "./initFirebase";
 import "./style/style.css";
+import uniqid from "uniqid";
 
 const Display = ({ state }) => {
   const stateEndRef = useRef(null);
@@ -18,7 +19,7 @@ const Display = ({ state }) => {
         //show only last 50 items
         .slice(Math.max(state[0].array.length - 50, 0))
         .map((item) => (
-          <div className="messages">
+          <div key={uniqid()} className="messages">
             <p className="itemName">{item.name}</p>
             <p className="itemMessage">{item.message}</p>
             <p>{new Date().toString()} </p>
