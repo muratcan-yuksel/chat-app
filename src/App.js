@@ -15,15 +15,18 @@ const Display = ({ state }) => {
 
   return (
     <div>
-      {state[0].array.map((item) => (
-        <div className="messages">
-          <p className="itemName">{item.name}</p>
-          <p className="itemMessage">{item.message}</p>
-          {/* <p className="itemDate">{item.date}</p> */}
-          <p>{new Date().toString()} </p>
-          {/* {console.log(item.date)} */}
-        </div>
-      ))}
+      {state[0].array
+        //show only the last 50 items
+        .slice(Math.max(state[0].array.length - 50, 0))
+        .map((item) => (
+          <div className="messages">
+            <p className="itemName">{item.name}</p>
+            <p className="itemMessage">{item.message}</p>
+            {/* <p className="itemDate">{item.date}</p> */}
+            <p>{new Date().toString()} </p>
+            {/* {console.log(item.date)} */}
+          </div>
+        ))}
       <div ref={stateEndRef} />
     </div>
   );
