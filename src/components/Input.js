@@ -85,7 +85,7 @@ const Input = () => {
     return (
       <Form onKeyPress={handleKeypress} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Write your message here</Form.Label>
+          {/* <Form.Label>Write your message here</Form.Label> */}
           <Form.Control
             className="textArea"
             onChange={handleChange}

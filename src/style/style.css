@@ -1,17 +1,43 @@
+body {
+  background: #f1f2b5; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #135058,
+    #f1f2b5
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #135058,
+    #f1f2b5
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 .display {
-  height: 50vh;
+  /* color: grey; */
+  height: 70vh;
   border: 1px solid black;
   overflow-y: auto;
+  /* font-weight: ; */
 }
+/* .inputField {
+  background-color: grey;
+} */
 .messages {
-  border: 1px solid blue;
+  border: 1px solid whitesmoke;
 }
 .itemName {
   font-weight: 900;
   margin: 0;
+  margin-left: 2px;
   padding: 0;
 }
 .itemMessage {
   margin: 0;
   padding: 0;
+}
+.itemDate {
+  font-size: 0.8em;
+}
+.flexing {
+  display: flex;
+  justify-content: space-between;
 }

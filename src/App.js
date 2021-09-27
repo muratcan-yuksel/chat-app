@@ -20,9 +20,11 @@ const Display = ({ state }) => {
         .slice(Math.max(state[0].array.length - 50, 0))
         .map((item) => (
           <div key={uniqid()} className="messages">
-            <p className="itemName">{item.name}</p>
+            <div className="flexing">
+              <p className="itemName">{item.name}</p>
+              <p className="itemDate">{new Date().toString()} </p>
+            </div>
             <p className="itemMessage">{item.message}</p>
-            <p>{new Date().toString()} </p>
           </div>
         ))}
       <div ref={stateEndRef} />
@@ -62,7 +64,9 @@ function App() {
       <div className="display">
         <Display state={state} />
       </div>
-      <Input />
+      <div className="inputField">
+        <Input />
+      </div>
     </div>
   );
 }
