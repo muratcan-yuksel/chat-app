@@ -13,21 +13,31 @@ const Display = ({ state }) => {
     scrollToBottom();
   }, [state]);
 
+  const result = state[0].array
+    //show only last 50 items
+    .slice(Math.max(state[0].array.length - 50, 0))
+    .map((item) => (
+      <div key={uniqid()} className="messages">
+        <div className="flexing">
+          <p className="itemName">{item.name}</p>
+          <p className="itemDate">
+            {new Date(
+              item.dateTime.seconds * 1000 + item.dateTime.nanoseconds / 1000000
+            ).toDateString() +
+              " " +
+              new Date(
+                item.dateTime.seconds * 1000 +
+                  item.dateTime.nanoseconds / 1000000
+              ).toLocaleTimeString()}{" "}
+          </p>
+        </div>
+        <p className="itemMessage">{item.message}</p>
+      </div>
+    ));
+
   return (
     <div>
-      {state[0].array
-        //show only last 50 items
-        .slice(Math.max(state[0].array.length - 50, 0))
-        .map((item) => (
-          <div key={uniqid()} className="messages">
-            <div className="flexing">
-              <p className="itemName">{item.name}</p>
-              {/* <p className="itemDate">{item.dateTime} </p> */}
-              {console.log(item)}
-            </div>
-            <p className="itemMessage">{item.message}</p>
-          </div>
-        ))}
+      {result}
       <div ref={stateEndRef} />
     </div>
   );
