@@ -9,22 +9,19 @@ const Display = ({ state }) => {
     stateEndRef.current.scrollIntoView({ behavior: "smooth" });
   };
   useEffect(() => {
-    // getInput();
     scrollToBottom();
   }, [state]);
 
   return (
     <div>
       {state[0].array
-        //show only the last 50 items
+        //show only last 50 items
         .slice(Math.max(state[0].array.length - 50, 0))
         .map((item) => (
           <div className="messages">
             <p className="itemName">{item.name}</p>
             <p className="itemMessage">{item.message}</p>
-            {/* <p className="itemDate">{item.date}</p> */}
             <p>{new Date().toString()} </p>
-            {/* {console.log(item.date)} */}
           </div>
         ))}
       <div ref={stateEndRef} />
@@ -53,8 +50,6 @@ function App() {
     });
   }
   useEffect(() => {
-    // console.log(state[0].array.slice(-1)[0].message);
-
     getInput();
   }, []);
 
